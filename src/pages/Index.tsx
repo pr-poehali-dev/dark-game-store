@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -20,6 +21,7 @@ import { Slider } from "@/components/ui/slider";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("all");
   const [selectedPlatform, setSelectedPlatform] = useState("all");
@@ -161,6 +163,7 @@ const Index = () => {
 
               <Button
                 variant="outline"
+                onClick={() => navigate("/cart")}
                 className="relative border-gray-600 hover:bg-[#FF6B35] hover:border-[#FF6B35]"
               >
                 <Icon name="ShoppingCart" size={20} />
@@ -173,6 +176,7 @@ const Index = () => {
 
               <Button
                 variant="outline"
+                onClick={() => navigate("/profile")}
                 className="border-gray-600 hover:bg-[#4A4AFF] hover:border-[#4A4AFF]"
               >
                 <Icon name="User" size={20} />
@@ -277,7 +281,8 @@ const Index = () => {
             {filteredGames.map((game) => (
               <Card
                 key={game.id}
-                className="bg-[#2D2D2D] border-gray-700 hover:border-[#FF6B35] transition-all duration-300 hover:scale-105"
+                className="bg-[#2D2D2D] border-gray-700 hover:border-[#FF6B35] transition-all duration-300 hover:scale-105 cursor-pointer"
+                onClick={() => navigate(`/game/${game.id}`)}
               >
                 <CardHeader className="p-0">
                   <div className="relative">
